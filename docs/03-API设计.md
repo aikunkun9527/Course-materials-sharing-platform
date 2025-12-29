@@ -379,9 +379,9 @@ GET /api/v1/courses?page=1&limit=20&category=计算机&keyword=数据结构
         "id": 1,
         "title": "数据结构与算法",
         "description": "学习基础数据结构和算法设计",
-        "teacher": {
+        "creator": {
           "id": 2,
-          "username": "王教授",
+          "username": "张三",
           "avatar_url": "https://oss.example.com/avatars/2.jpg"
         },
         "category": "计算机",
@@ -443,7 +443,7 @@ Authorization: Bearer <JWT_TOKEN> (可选)
 }
 ```
 
-### 4.3 创建课程（仅教师）
+### 4.3 创建课程（所有用户）
 
 **请求**
 ```http
@@ -473,7 +473,6 @@ Content-Type: application/json
     "id": 2,
     "title": "机器学习基础",
     "description": "学习机器学习的基本概念和算法",
-    "teacher_id": 2,
     "category": "人工智能",
     "max_students": 150,
     "current_students": 0,
@@ -483,7 +482,7 @@ Content-Type: application/json
 }
 ```
 
-### 4.4 更新课程（仅教师/管理员）
+### 4.4 更新课程（仅创建者/管理员）
 
 **请求**
 ```http
@@ -1272,7 +1271,7 @@ Authorization: Bearer <JWT_TOKEN>
         "title": "数据结构与算法",
         "type": "course",
         "category": "计算机",
-        "teacher": "王教授",
+        "creator": "张三",
         "current_students": 120
       }
     ],
@@ -1323,7 +1322,7 @@ Authorization: Bearer <JWT_TOKEN> (需要管理员权限)
       "total": 1500,
       "new_today": 15,
       "students": 1200,
-      "teachers": 280,
+      "creators": 280,
       "admins": 20
     },
     "courses": {
@@ -1456,7 +1455,7 @@ function authorize(...roles) {
 }
 
 // 使用示例
-router.post('/courses', authenticate, authorize('teacher', 'admin'), createCourse);
+router.post('/courses', authenticate, createCourse); // 所有认证用户都可以创建课程
 ```
 
 ### 11.3 验证中间件

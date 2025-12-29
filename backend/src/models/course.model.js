@@ -235,7 +235,7 @@ class Course {
         SELECT c.*,
                u.username as creator_name,
                u.avatar_url as creator_avatar,
-               'teacher' as user_role,
+               'creator' as user_role,
                c.created_at as enrolled_at,
                'created' as source_type,
                (SELECT COUNT(*) FROM materials WHERE course_id = c.id AND deleted_at IS NULL) as material_count,
