@@ -1,0 +1,160 @@
+.discussion-detail-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.page-header {
+  margin-bottom: 24px;
+}
+
+.discussion-card {
+  margin-bottom: 24px;
+}
+
+.discussion-header {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.discussion-header h1 {
+  margin: 0 0 16px 0;
+  font-size: 28px;
+  color: #262626;
+}
+
+.discussion-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #8c8c8c;
+  font-size: 14px;
+}
+
+.author-name {
+  font-weight: 500;
+  color: #262626;
+}
+
+.publish-time {
+  color: #8c8c8c;
+}
+
+.discussion-content {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #262626;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.discussion-stats {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.view-count {
+  color: #8c8c8c;
+  font-size: 14px;
+}
+
+.comments-card {
+  margin-bottom: 24px;
+}
+
+.comment-form {
+  margin-bottom: 24px;
+  padding: 16px;
+  background: #fafafa;
+  border-radius: 8px;
+}
+
+.locked-message {
+  padding: 16px;
+  text-align: center;
+  color: #8c8c8c;
+  background: #fafafa;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.comment-item {
+  padding: 16px;
+  background: #fafafa;
+  border-radius: 8px;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.comment-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.comment-author {
+  font-weight: 500;
+  color: #262626;
+}
+
+.comment-time {
+  font-size: 12px;
+  color: #8c8c8c;
+}
+
+.comment-content {
+  margin-bottom: 12px;
+  color: #262626;
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.6;
+}
+
+.comment-actions {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+}
+
+.action-item {
+  cursor: pointer;
+  color: #8c8c8c;
+  transition: color 0.3s;
+}
+
+.action-item:hover {
+  color: #1890ff;
+}
+
+.action-item.danger:hover {
+  color: #ff4d4f;
+}
+
+.replies {
+  margin-left: 48px;
+  padding-left: 16px;
+  border-left: 2px solid #f0f0f0;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}

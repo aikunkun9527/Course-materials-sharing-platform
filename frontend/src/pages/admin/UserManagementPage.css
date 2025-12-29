@@ -1,0 +1,15 @@
+.user-management-page {
+  padding: 24px;
+}
+
+.management-card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.filter-section {
+  margin-bottom: 16px;
+}
+
+.user-table {
+  margin-top: 16px;
+}

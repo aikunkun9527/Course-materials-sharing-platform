@@ -1,0 +1,102 @@
+.my-courses-page {
+  padding: 24px;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.course-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.course-card .ant-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.course-cover {
+  height: 160px;
+  overflow: hidden;
+  position: relative;
+}
+
+.course-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.course-cover.default {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-size: 48px;
+}
+
+.course-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.course-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.course-description {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  min-height: 40px;
+}
+
+.course-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #666;
+  padding: 8px 0;
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.course-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #666;
+  padding: 8px 0;
+}
+
+.course-actions {
+  margin-top: auto;
+  padding-top: 8px;
+}

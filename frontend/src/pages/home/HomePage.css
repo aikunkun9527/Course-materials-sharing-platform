@@ -1,0 +1,47 @@
+.home-page {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.welcome-section {
+  margin-bottom: 24px;
+}
+
+.welcome-section h1 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.welcome-section p {
+  color: #666;
+  font-size: 16px;
+}
+
+.stats-section {
+  margin-bottom: 24px;
+}
+
+.quick-links {
+  margin-top: 24px;
+}
+
+.quick-link-card {
+  text-align: center;
+  padding: 24px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.quick-link-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.quick-link-card h3 {
+  margin: 16px 0 8px;
+  font-size: 18px;
+}
+
+.quick-link-card p {
+  color: #666;
+  margin: 0;
+}

@@ -1,0 +1,54 @@
+.logo {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.logo h1 {
+  color: white;
+  font-size: 18px;
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 0 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.user-info:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.username {
+  font-size: 14px;
+}
+
+.content {
+  margin: 24px;
+  background: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  min-height: calc(100vh - 112px);
+}

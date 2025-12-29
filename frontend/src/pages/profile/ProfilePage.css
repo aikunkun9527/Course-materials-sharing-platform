@@ -1,0 +1,57 @@
+.profile-page {
+  padding: 24px;
+}
+
+.profile-card {
+  text-align: center;
+}
+
+.avatar-section {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatar-uploader .ant-upload {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.avatar-uploader .ant-upload img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profile-info {
+  margin-top: 24px;
+  text-align: left;
+}
+
+.profile-tabs-card {
+  min-height: 500px;
+}
+
+.security-section {
+  padding: 24px 0;
+}
+
+.security-section h3 {
+  margin-bottom: 16px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .profile-page {
+    padding: 16px;
+  }
+
+  .avatar-section {
+    flex-direction: column;
+  }
+}

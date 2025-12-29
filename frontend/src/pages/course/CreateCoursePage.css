@@ -1,0 +1,42 @@
+.create-course-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.back-button {
+  padding: 4px 8px;
+  height: auto;
+}
+
+.title-icon {
+  font-size: 20px;
+  color: #1890ff;
+}
+
+.create-course-card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.create-course-form {
+  padding: 24px 0;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.form-actions .ant-btn {
+  min-width: 120px;
+}
