@@ -166,6 +166,26 @@ const CourseDetailPage = () => {
     }
   };
 
+  const handleDeleteMaterial = async (materialId: number) => {
+    try {
+      await materialService.delete(materialId);
+      message.success('删除成功');
+      fetchMaterials();
+    } catch (error) {
+      message.error('删除失败');
+    }
+  };
+
+  const handleDeleteCourse = async () => {
+    try {
+      await courseService.delete(Number(id));
+      message.success('删除成功');
+      navigate('/courses');
+    } catch (error) {
+      message.error('删除失败');
+    }
+  };
+
   const handleDownload = async (materialId: number) => {
     // 防止重复点击
     if (downloadingIds.current.has(materialId)) {
@@ -241,6 +261,19 @@ const CourseDetailPage = () => {
           返回课程列表
         </Button>
         <h1>{course.title}</h1>
+        {(course.creator_id === user?.id || user?.role === 'admin') && (
+          <Popconfirm
+            title="确定要删除这个课程吗?"
+            description="删除后无法恢复,所有相关资料和讨论也会被删除"
+            onConfirm={handleDeleteCourse}
+            okText="确定"
+            cancelText="取消"
+          >
+            <Button type="primary" danger icon={<DeleteOutlined />}>
+              删除课程
+            </Button>
+          </Popconfirm>
+        )}
       </div>
 
       <Card className="course-info-card">
@@ -301,6 +334,24 @@ const CourseDetailPage = () => {
                               >
                                 下载
                               </Button>,
+                              ...(item.uploader_id === user?.id || user?.role === 'admin' ? [
+                                <Popconfirm
+                                  key="delete"
+                                  title="确定要删除这份资料吗?"
+                                  description="删除后无法恢复"
+                                  onConfirm={() => handleDeleteMaterial(item.id)}
+                                  okText="确定"
+                                  cancelText="取消"
+                                >
+                                  <Button
+                                    type="link"
+                                    danger
+                                    icon={<DeleteOutlined />}
+                                  >
+                                    删除
+                                  </Button>
+                                </Popconfirm>,
+                              ] : []),
                             ]}
                           >
                             <List.Item.Meta

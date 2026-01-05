@@ -173,44 +173,83 @@ class MaterialController {
         return Response.forbidden(res, '不是课程成员');
       }
 
-      // 从本地URL中提取文件路径
-      const urlPath = new URL(material.file_url).pathname;
-      const relativePath = urlPath.replace('/uploads/', '');
-      const absolutePath = require('path').join(__dirname, '../../uploads', relativePath);
+      // 判断是OSS文件还是本地文件
+      const isOSSFile = material.file_url.includes('oss-cn-shenzhen.aliyuncs.com') ||
+                       material.file_url.includes('aliyuncs.com');
 
-      // 检查文件是否存在
-      const fs = require('fs');
-      if (!fs.existsSync(absolutePath)) {
-        return Response.notFound(res, '文件不存在');
+      if (isOSSFile) {
+        // OSS文件：使用代理方式下载以保留原始文件名
+        logger.info(`Downloading OSS file: ${material.file_url}`);
+
+        // 记录下载日志
+        await Material.logDownload({
+          material_id: material.id,
+          user_id: userId,
+          ip_address: ip,
+          user_agent: userAgent,
+        });
+
+        // 更新下载次数
+        await Material.incrementDownloadCount(material.id);
+
+        logger.info(`Material downloaded: ${material.id} by user ${userId}`);
+
+        // 从OSS获取文件并代理下载
+        const axios = require('axios');
+        const response = await axios({
+          method: 'get',
+          url: material.file_url,
+          responseType: 'stream'
+        });
+
+        // 设置响应头以保留原始文件名
+        const encodedFileName = encodeURIComponent(material.file_name);
+        res.setHeader('Content-Type', material.file_type || response.headers['content-type'] || 'application/octet-stream');
+        res.setHeader('Content-Disposition', `attachment; filename*=UTF-8''${encodedFileName}`);
+
+        // 将OSS文件流转发给客户端
+        response.data.pipe(res);
+        return;
+      } else {
+        // 本地文件：从本地读取
+        const urlPath = new URL(material.file_url).pathname;
+        const relativePath = urlPath.replace('/uploads/', '');
+        const absolutePath = require('path').join(__dirname, '../../uploads', relativePath);
+
+        // 检查文件是否存在
+        const fs = require('fs');
+        if (!fs.existsSync(absolutePath)) {
+          return Response.notFound(res, '文件不存在');
+        }
+
+        // 记录下载日志
+        await Material.logDownload({
+          material_id: material.id,
+          user_id: userId,
+          ip_address: ip,
+          user_agent: userAgent,
+        });
+
+        // 更新下载次数
+        await Material.incrementDownloadCount(material.id);
+
+        logger.info(`Material downloaded: ${material.id} by user ${userId}`);
+
+        // 读取文件
+        const fileContent = fs.readFileSync(absolutePath);
+
+        // 设置响应头 - 使用 RFC 5987 编码格式支持中文文件名
+        const encodedFileName = encodeURIComponent(material.file_name);
+        res.setHeader('Content-Type', material.file_type || 'application/octet-stream');
+
+        // 使用 RFC 5987 标准，只使用 filename*，不使用 filename
+        res.setHeader('Content-Disposition', `attachment; filename*=UTF-8''${encodedFileName}`);
+
+        res.setHeader('Content-Length', fileContent.length);
+
+        // 发送文件内容
+        res.status(200).send(fileContent);
       }
-
-      // 记录下载日志
-      await Material.logDownload({
-        material_id: material.id,
-        user_id: userId,
-        ip_address: ip,
-        user_agent: userAgent,
-      });
-
-      // 更新下载次数
-      await Material.incrementDownloadCount(material.id);
-
-      logger.info(`Material downloaded: ${material.id} by user ${userId}`);
-
-      // 读取文件
-      const fileContent = fs.readFileSync(absolutePath);
-
-      // 设置响应头 - 使用 RFC 5987 编码格式支持中文文件名
-      const encodedFileName = encodeURIComponent(material.file_name);
-      res.setHeader('Content-Type', material.file_type || 'application/octet-stream');
-
-      // 使用 RFC 5987 标准，只使用 filename*，不使用 filename
-      res.setHeader('Content-Disposition', `attachment; filename*=UTF-8''${encodedFileName}`);
-
-      res.setHeader('Content-Length', fileContent.length);
-
-      // 发送文件内容
-      res.status(200).send(fileContent);
     } catch (error) {
       logger.error('Download material error:', error);
       return Response.serverError(res, error.message);

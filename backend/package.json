@@ -19,7 +19,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "ali-oss": "^6.18.1",
+    "ali-oss": "^6.23.0",
+    "axios": "^1.13.2",
     "bcryptjs": "^2.4.3",
     "bluebird": "^3.7.2",
     "compression": "^1.7.4",

@@ -147,9 +147,9 @@ const DiscussionDetailPage = () => {
     return (
       <div key={comment.id} className="comment-item">
         <div className="comment-header">
-          <Avatar src={comment.author?.avatar_url} icon={<UserOutlined />} />
+          <Avatar src={comment.author_avatar} icon={<UserOutlined />} />
           <div className="comment-meta">
-            <span className="comment-author">{comment.author?.username}</span>
+            <span className="comment-author">{comment.author_name}</span>
             <span className="comment-time">{new Date(comment.created_at).toLocaleString()}</span>
           </div>
         </div>
@@ -186,7 +186,7 @@ const DiscussionDetailPage = () => {
             <Form.Item name="content" rules={[{ required: true, message: '请输入评论内容' }]}>
               <TextArea
                 rows={2}
-                placeholder={`回复 ${comment.author?.username}`}
+                placeholder={`回复 ${comment.author_name}`}
                 autoFocus
               />
             </Form.Item>
@@ -240,11 +240,11 @@ const DiscussionDetailPage = () => {
           </h1>
           <div className="discussion-meta">
             <Avatar
-              src={discussion.author?.avatar_url}
+              src={discussion.author_avatar}
               icon={<UserOutlined />}
               size="small"
             />
-            <span className="author-name">{discussion.author?.username}</span>
+            <span className="author-name">{discussion.author_name}</span>
             <span className="publish-time">
               发布于 {new Date(discussion.created_at).toLocaleString()}
             </span>

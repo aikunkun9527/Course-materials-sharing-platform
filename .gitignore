@@ -42,3 +42,7 @@ temp/
 
 # Windows reserved names
 nul
+
+# Documentation (keep README.md)
+*.md
+!README.md
