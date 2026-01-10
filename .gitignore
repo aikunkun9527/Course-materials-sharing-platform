@@ -46,5 +46,5 @@ nul
 # Documentation (keep specific files)
 *.md
 !README.md
-!DEPLOY_TO_GHCR.md
-!QUICK_START_GHCR.md
+!DEPLOY_LIGHTWEIGHT_SERVER.md
+!QUICK_START_SERVER.md
