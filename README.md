@@ -323,14 +323,25 @@ docker build -t course-platform-frontend ./frontend
 
 ## ☁️ 云服务部署
 
-本平台支持部署到阿里云或其他云服务提供商：
+本平台支持部署到阿里云轻量应用服务器：
 
 ### 部署选项
 
-1. **阿里云 SAE** - Serverless 应用引擎
-2. **腾讯云 Serverless** - 云函数部署
-3. **AWS EC2** - 虚拟机部署
-4. **自建服务器** - 传统部署方式
+1. **阿里云轻量应用服务器** - 推荐方案
+   - 配置: 2核2G Ubuntu
+   - 适合中小型应用
+   - 成本低,易维护
+   - 详细部署指南: [DEPLOY_LIGHTWEIGHT_SERVER.md](./DEPLOY_LIGHTWEIGHT_SERVER.md)
+   - 快速开始: [QUICK_START_SERVER.md](./QUICK_START_SERVER.md)
+
+2. **其他云服务**
+   - 腾讯云轻量应用服务器
+   - AWS EC2
+   - 自建服务器
+
+### 部署控制台
+
+- 阿里云轻量应用服务器: https://swasnext.console.aliyun.com/servers/cn-shenzhen
 
 详细部署指南请参考：[docs/06-部署指南.md](./docs/06-部署指南.md)
 
